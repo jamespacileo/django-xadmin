@@ -44,8 +44,7 @@ class LoginView(BaseAdminView):
     def update_params(self, defaults):
         pass
 
-    @never_cache
-    @watch_login
+    #@never_cache
     def get(self, request, *args, **kwargs):
         context = self.get_context()
         helper = FormHelper()
@@ -65,9 +64,9 @@ class LoginView(BaseAdminView):
         self.update_params(defaults)
         return login(request, **defaults)
 
-    @never_cache
+    #@never_cache
     def post(self, request, *args, **kwargs):
-        return self.get(request)
+        return never_cache(watch_login(self.get(request)))
 
 
 class LogoutView(BaseAdminView):
