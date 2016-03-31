@@ -62,7 +62,7 @@ class LoginView(BaseAdminView):
             'template_name': self.login_template or 'xadmin/views/login.html',
         }
         self.update_params(defaults)
-        return watch_login(login)(request, **defaults))
+        return watch_login(login)(request, **defaults)
 
     #@never_cache
     def post(self, request, *args, **kwargs):
