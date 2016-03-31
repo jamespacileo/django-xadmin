@@ -11,6 +11,8 @@ from xadmin.forms import AdminAuthenticationForm
 from xadmin.models import UserSettings
 from xadmin.layout import FormHelper
 
+# django-axes
+from axes.decorators import watch_login
 
 class IndexView(Dashboard):
     title = _("Main Dashboard")
@@ -64,6 +66,7 @@ class LoginView(BaseAdminView):
         return login(request, **defaults)
 
     @never_cache
+    @watch_login
     def post(self, request, *args, **kwargs):
         return self.get(request)
 
