@@ -11,6 +11,7 @@ from xadmin.forms import AdminAuthenticationForm
 from xadmin.models import UserSettings
 from xadmin.layout import FormHelper
 
+from axes.decorators import watch_login
 
 class IndexView(Dashboard):
     title = _("Main Dashboard")
@@ -44,6 +45,7 @@ class LoginView(BaseAdminView):
         pass
 
     @never_cache
+    @watch_login
     def get(self, request, *args, **kwargs):
         context = self.get_context()
         helper = FormHelper()
