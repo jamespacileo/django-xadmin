@@ -62,11 +62,11 @@ class LoginView(BaseAdminView):
             'template_name': self.login_template or 'xadmin/views/login.html',
         }
         self.update_params(defaults)
-        return login(request, **defaults)
+        return watch_login(login(request, **defaults))
 
     #@never_cache
     def post(self, request, *args, **kwargs):
-        return watch_login(self.get(request))
+        return self.get(request)
 
 
 class LogoutView(BaseAdminView):
