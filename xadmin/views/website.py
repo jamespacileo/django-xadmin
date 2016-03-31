@@ -66,9 +66,8 @@ class LoginView(BaseAdminView):
         return login(request, **defaults)
 
     @never_cache
-    @watch_login
     def post(self, request, *args, **kwargs):
-        return self.get(request)
+        return watch_login(self.get(request))
 
 
 class LogoutView(BaseAdminView):
