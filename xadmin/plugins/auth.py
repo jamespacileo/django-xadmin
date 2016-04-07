@@ -46,6 +46,7 @@ class GroupAdmin(object):
     ordering = ('name',)
     style_fields = {'permissions': 'm2m_transfer'}
     model_icon = 'fa fa-group'
+    reversion_enable = True
 
     def get_field_attrs(self, db_field, **kwargs):
         attrs = super(GroupAdmin, self).get_field_attrs(db_field, **kwargs)
@@ -63,6 +64,7 @@ class UserAdmin(object):
     style_fields = {'user_permissions': 'm2m_transfer'}
     model_icon = 'fa fa-user'
     relfield_style = 'fk-ajax'
+    reversion_enable = True
 
     def get_field_attrs(self, db_field, **kwargs):
         attrs = super(UserAdmin, self).get_field_attrs(db_field, **kwargs)
@@ -106,6 +108,7 @@ class UserAdmin(object):
 
 
 class PermissionAdmin(object):
+    reversion_enable = True
 
     def show_name(self, p):
         return get_permission_name(p)
